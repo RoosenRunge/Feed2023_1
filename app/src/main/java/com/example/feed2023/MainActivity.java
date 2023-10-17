@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         //1.5 - Vamos criar agora uma instância da nossa AsyncTask e executá-la
         ParallelProcessing parallelProcessing = new ParallelProcessing();
         parallelProcessing.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml");
+
+
     }
 
     @Override
@@ -150,6 +152,12 @@ public class MainActivity extends AppCompatActivity {
             // Obs.Deve ser comentado na parte 2, quando é ativada a RecyclerView
 
              xmlTexView.setText(mFileContents);
+
+            //Parte 2 parse application
+            //criando uma instância da classe parseApplication e disparando a mineração e vamos conferir no logcat
+
+            ParseApplication parseApplication = new ParseApplication(mFileContents);
+            parseApplication.process();
         }
 
         return super.onOptionsItemSelected(item);
@@ -161,4 +169,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }*/
+
+
+
 }
